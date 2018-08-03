@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 5000
 
 spring:
   mvc.view.prefix: /WEB-INF/view/
@@ -12,14 +12,12 @@ logging:
     com.spring: DEBUG
 
 datasource:
-  driver-class-name: com.mysql.jdbc.Driver
-  url: jdbc:mysql://192.168.0.192:3326/test?useUnicode=true&charaterEncoding=utf-8&interactiveClient=true&autoReconnect=true&autoReconnectForPools=true&useSSL=false
-  username: test01
-  password: aei12@3$TE
+  driver-class-name: org.postgresql.Driver
+  url: jdbc:postgresql://ec2-107-22-192-11.compute-1.amazonaws.com:5432/db5n1ro71i1tv?sslmode=require
+  username: ueberfgroelzuy
+  password: c2b7d39d9545095a10e041f7517e1a4166fdceae619ef9ff4257bc50da2d61e7
   initial-size: 10
   max-active: 10
   max-idle: 10
   min-idle: 10
   max-wait: 3000
-  
-
