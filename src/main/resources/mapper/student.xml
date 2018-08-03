@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.StudentMapper">
+
+    <select id="mySubjectList" parameterType="hashmap"
+        resultType="hashmap">
+        SELECT * FROM
+        courses
+        WHERE subject_code IN (
+        SELECT
+        subject_code FROM
+        student_courses
+        WHERE id=#{id}
+        )
+    </select>
+
+    <select id="getSubjectList" parameterType="hashmap"
+        resultType="hashmap">
+        SELECT *FROM
+        courses
+    </select>
+    
+    <select id="checkSubject" parameterType="com.spring.models.MySubjectVO" resultType="com.spring.models.MySubjectVO">
+    SELECT * FROM
+    student_courses
+    WHERE id=#{id}
+    AND subject_code=#{subjectCode}
+    </select>
+
+    <insert id="chooseSubject" parameterType="com.spring.models.MySubjectVO">
+        INSERT INTO student_courses
+        (
+        id,
+        subject_code
+        )
+        VALUES
+        (
+        #{id},
+        #{subjectCode}
+        )
+    </insert>
+
+    <delete id="cancleSubject" parameterType="com.spring.models.MySubjectVO">
+        DELETE FROM
+        student_courses
+        WHERE id=#{id}
+        AND subject_code=#{subjectCode}
+    </delete>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.JoinMapper">
+    
+<insert id="addMember" parameterType="com.spring.models.JoinVO">
+    INSERT INTO users
+    (
+    id,
+    password,
+    user_name,
+    type,
+    mail_address,
+    phone,
+    reg_date,
+    upd_date
+    )
+    VALUES
+    (
+      #{id},
+      #{password},
+      #{userName},
+      #{type},
+      #{mailAddress},
+      #{phone},
+      NOW(),
+      NOW()
+    )
+  </insert>
+  
+  <select id="checkId" parameterType="com.spring.models.JoinVO" resultType="com.spring.models.JoinVO">
+  SELECT * FROM
+  users
+  WHERE
+  id=#{id}
+  </select>
+  
+  <select id="getUser" parameterType="com.spring.models.JoinVO" resultType="com.spring.models.JoinVO">
+  SELECT * FROM
+  users
+  WHERE
+  id=#{id}
+  </select>
+    
+    <update id="changeUserInfo" parameterType="com.spring.models.JoinVO">
+    UPDATE users
+    SET mail_address=#{mailAddress},
+    phone=#{phone}
+    WHERE id=#{id}
+    </update>
+    
+</mapper>

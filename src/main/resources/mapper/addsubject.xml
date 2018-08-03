@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.AddSubjectMapper">
+
+<insert id="addSubject" parameterType="com.spring.models.SubjectVO">
+INSERT INTO courses
+(
+subject_code,
+week,
+period_from,
+period_to,
+subject_name,
+professor_name,
+type,
+credit,
+quota
+)
+VALUES
+(
+#{subjectCode},
+#{week},
+#{periodFrom},
+#{periodTo},
+#{subjectName},
+#{professorName},
+#{type},
+#{credit},
+#{quota}
+)
+</insert>
+
+</mapper>
